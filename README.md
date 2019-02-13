@@ -94,7 +94,7 @@ Add a Library class with the following functionality:
 > dpl.add_to_collection(mockingbird)
 > dpl.add_to_collection(kingdoms)
 > dpl.books
-# => [#<Book:0x007f98a9c6ace8...>, #<Book:0x007fb410e8e1f0...>, #<Book:0x007fb410ea56e8...>]
+# => [#<Book:0x007f98a9c6ace8...>, #<Book:0x007fb410e8e1f0...>, #<Book:0x007f98a9c6ad48...>]
 ```
 
 ### Iteration 4 Library - Get information about the collection
