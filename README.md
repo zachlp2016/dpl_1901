@@ -43,25 +43,25 @@ Currently we have the beginnings of an Author class. Add to that class so that i
 > require "./lib/author"
 # => true
 
-> charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
+> nk_jemisin = Author.new({first_name: "N.K.", last_name: "Jemisin"})
 # => #<Author:0x007fb410ada400>
 
-> charlotte_bronte.books
+> nk_jemisin.books
 # => []
 
-> charlotte_bronte.add_book("Jane Eyre", "October 16, 1847")
-# => #<Book:0x007f98a9c6ace8 @author_first_name="Charlotte", @author_last_name="Bronte", @publication_date="1847", @title="Jane Eyre">
+> nk_jemisin.add_book("The Fifth Season", "November 3, 2015")
+# => #<Book:0x007f98a9c6ace8 @author_first_name="N.K.", @author_last_name="Jemisin", @publication_date="2015", @title="The Fifth Season">
 
-> charlotte_bronte.books
-# => [#<Book:0x007f98a9c6ace8 @author_first_name="Charlotte", @author_last_name="Bronte", @publication_date="1847", @title="Jane Eyre">]
+> nk_jemisin.books
+# => [#<Book:0x007f98a9c6ace8 @author_first_name="N.K.", @author_last_name="Jemisin", @publication_date="2015", @title="The Fifth Season">]
 
-> charlotte_bronte.add_book("Villette", "1853")
-# => #<Book:0x007f98a9c6ace8 @author_first_name="Charlotte", @author_last_name="Bronte", @publication_date="1853", @title="Villette">
+> nk_jemisin.add_book("The Hundred Thousand Kingdoms", "2010")
+#<Book:0x007f98a9c6ad48 @author_first_name="N.K.", @author_last_name="Jemisin", @publication_date="2010", @title="The Hundred Thousand Kingdoms">
 
-> charlotte_bronte.books
+> nk_jemisin.books
 # => [
-      #<Book:0x007f98a9c6ace8 @author_first_name="Charlotte", @author_last_name="Bronte", @publication_date="10/16/1847", @title="Jane Eyre">,
-      #<Book:0x007f98a9c6add3 @author_first_name="Charlotte", @author_last_name="Bronte", @publication_date="1853", @title="Villette">
+      #<Book:0x007f98a9c6ace8 @author_first_name="N.K.", @author_last_name="Jemisin", @publication_date="2015", @title="The Fifth Season">,
+      #<Book:0x007f98a9c6ad48 @author_first_name="N.K.", @author_last_name="Jemisin", @publication_date="2010", @title="The Hundred Thousand Kingdoms">
     ]
 ```
 
@@ -74,9 +74,9 @@ Add a Library class with the following functionality:
 > require './lib/library'
 > require './lib/author'
 
-> charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
-> jane_eyre = charlotte_bronte.add_book("Jane Eyre", "October 16, 1847")
-> villette  = charlotte_bronte.add_book("Villette", "1853")
+> nk_jemisin = Author.new({first_name: "N.K.", last_name: "Jemisin"})
+> fifth_season = nk_jemisin.add_book("The Fifth Season", "November 3, 2015")
+> kingdoms = nk_jemisin.add_book("The Hundred Thousand Kingdoms", "2010")
 
 > harper_lee  = Author.new({first_name: "Harper", last_name: "Lee"})
 > mockingbird = harper_lee.add_book("To Kill a Mockingbird", "July 11, 1960")
@@ -87,12 +87,12 @@ Add a Library class with the following functionality:
 > dpl.books
 # => []
 
-> dpl.add_to_collection(jane_eyre)
+> dpl.add_to_collection(fifth_season)
 > dpl.books
 # => [#<Book:0x007f98a9c6ace8...>]
 
 > dpl.add_to_collection(mockingbird)
-> dpl.add_to_collection(villette)
+> dpl.add_to_collection(kingdoms)
 > dpl.books
 # => [#<Book:0x007f98a9c6ace8...>, #<Book:0x007fb410e8e1f0...>, #<Book:0x007fb410ea56e8...>]
 ```
@@ -109,18 +109,20 @@ For this iteration, assume dpl is loaded with data from iteration 3.
 
 > dpl.card_catalogue
 # NOTE:this method returns an array of books in alphabetical order by author's last name
-# => [#<Book:0x007f98a9c6ace8 @author_last_name="Bronte"...>, #<Book:0x007fb410ea56e8 @author_last_name="Bronte"...>, #<Book:0x007fb410e8e1f0 @author_last_name="Lee"...> ]
+# => [#<Book:0x007f98a9c6ace8 @author_last_name="Jemisin"...>, #<Book:0x007fb410ea56e8 @author_last_name="Jemisin"...>, #<Book:0x007fb410e8e1f0 @author_last_name="Lee"...> ]
 ```
 
 ### Iteration 5 Library - search
 For this iteration, assume dpl is loaded with data from iteration 3.
 
 ```ruby
-> dpl.find_by_author("Charlotte Bronte")
+> dpl.find_by_author("N.K. Jemisin")
 # => {
-#     "Jane Eyre" => #<Book:0x007f98a9c6ace8 @author_last_name="Bronte" @title="Jane Eyre"...>,
-#     "Villette"  => #<Book:0x007fb410ea56e8 @author_last_name="Bronte" @title="Villette"...>
+#     "The Fifth Season" => #<Book:0x007f98a9c6ace8 @author_first_name="N.K.", @author_last_name="Jemisin", @publication_date="2015", @title="The Fifth Season">,
+#     "The Hundred Thousand Kingdoms"  => #<Book:0x007f98a9c6ad48 @author_first_name="N.K.", @author_last_name="Jemisin", @publication_date="2010", @title="The Hundred Thousand Kingdoms">
 #    }
+
+
 
 > dpl.find_by_publication_date("1960")
 # => {
